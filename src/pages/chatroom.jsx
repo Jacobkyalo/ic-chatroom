@@ -153,6 +153,8 @@ export default function Chatroom() {
               <MembersDialog
                 isMembersOpen={isMembersOpen}
                 closeMembers={closeMembers}
+                members={members}
+                loading={loading}
               />
             )}
           </>
@@ -301,7 +303,9 @@ function MembersDialog({ isMembersOpen, closeMembers, members, loading }) {
                       X
                     </button>
                   </div>
-                  <h4 className="mb-4 text-lg font-bold">Members</h4>
+                  <h4 className="mb-4 text-lg font-bold">
+                    Members ({members?.length})
+                  </h4>
                   <ul className="flex flex-col gap-y-4">
                     {loading ? (
                       "Loading..."
