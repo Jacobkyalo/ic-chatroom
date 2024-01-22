@@ -77,7 +77,7 @@ export default function AuthContextProvider({ children }) {
       setLoading(true);
       await account.createRecovery(
         email,
-        "http://localhost:5173/account/reset-password",
+        "https://ic-chatroom.vercel.app/account/reset-password",
       );
       setLoading(false);
 
