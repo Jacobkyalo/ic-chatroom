@@ -21,7 +21,8 @@ export default function MessageCard({ message, deleteMessage }) {
           </div>
         </div>
         <p className="my-2 text-sm">{message?.body}</p>
-        <div className="text-end text-xs">
+        <div className="flex justify-end gap-x-2 text-xs">
+          <span>{new Date(message?.$createdAt).toDateString()}</span> |
           <span>{new Date(message?.$createdAt).toLocaleTimeString()}</span>
         </div>
       </div>
