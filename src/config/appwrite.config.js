@@ -1,4 +1,4 @@
-import { Client, Account, Databases } from "appwrite";
+import { Client, Account, Databases, Storage } from "appwrite";
 
 const client = new Client();
 
@@ -8,9 +8,11 @@ client
 
 export const account = new Account(client);
 export const databases = new Databases(client);
+export const storage = new Storage(client);
 
 export const DB_ID = import.meta.env.VITE_APPWRITE_DB_ID;
 export const ROOM_COLL_ID = import.meta.env.VITE_APPWRITE_ROOM_COLL_ID;
 export const MSG_COLL_ID = import.meta.env.VITE_APPWRITE_MSG_COLL_ID;
+export const BUCKET_ID = import.meta.env.VITE_APPWRITE_BUCKET_ID;
 
 export default client;
