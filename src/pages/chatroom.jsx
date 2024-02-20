@@ -239,7 +239,11 @@ function CommunitiesDialog({ isCommunitiesOpen, closeCommunities, rooms }) {
                         <h4 className="mb-4 text-lg font-bold">Communities</h4>
                         <ul className="flex flex-col gap-y-4">
                           {rooms?.map((room) => (
-                            <RoomItem key={room.$id} room={room} />
+                            <RoomItem
+                              key={room.$id}
+                              room={room}
+                              closeCommunities={closeCommunities}
+                            />
                           ))}
                         </ul>
                       </div>
