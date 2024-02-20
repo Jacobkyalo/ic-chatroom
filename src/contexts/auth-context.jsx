@@ -165,7 +165,9 @@ export default function AuthContextProvider({ children }) {
   };
 
   useEffect(() => {
-    persistUser();
+    if (localStorage.getItem("cookieFallback")) {
+      persistUser();
+    }
   }, []);
 
   const values = {
