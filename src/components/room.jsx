@@ -20,6 +20,7 @@ export default function Room() {
 
   const sendMessage = async (e) => {
     e.preventDefault();
+    if (!message) return;
 
     const payload = {
       userId: user.$id,
