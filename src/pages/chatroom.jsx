@@ -5,7 +5,7 @@ import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 import axios from "axios";
 import { VscAccount } from "react-icons/vsc";
-import { MdMenu } from "react-icons/md";
+import { MdMenu, MdOutlineHelpOutline } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
 import { DB_ID, ROOM_COLL_ID, databases } from "../config/appwrite.config";
 import LogoHeader from "../components/logo-header";
@@ -114,7 +114,7 @@ export default function Chatroom() {
         <main className="relative w-full flex-1 overflow-auto border-ic-green md:border-l-4 lg:border-r-4">
           <div className="sticky top-0 w-full bg-white px-2 py-6 shadow-lg sm:px-6">
             <div className="flex items-center justify-between">
-              <div className="flex items-center gap-x-2">
+              <div className="flex items-center gap-x-4">
                 <MdMenu
                   size={25}
                   className="cursor-pointer md:hidden"
@@ -124,13 +124,20 @@ export default function Chatroom() {
                   # {room?.href?.slice(1)}
                 </span>
               </div>
-              <div className="flex items-center gap-x-2">
+              <div className="flex items-center gap-x-4">
+                <Link to="/h/help">
+                  <MdOutlineHelpOutline
+                    size={25}
+                    className="text-neutral-600 transition-all duration-200 ease-in-out hover:text-ic-green"
+                  />
+                </Link>
                 <Link to="/account/profile">
                   <VscAccount
                     size={25}
                     className="text-neutral-600 transition-all duration-200 ease-in-out hover:text-ic-green"
                   />
                 </Link>
+
                 <IoPeopleOutline
                   size={25}
                   className="cursor-pointer lg:hidden"
