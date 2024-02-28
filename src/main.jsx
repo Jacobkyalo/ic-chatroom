@@ -16,6 +16,7 @@ import Room from "./components/room";
 import MemberProfile from "./pages/member-profile";
 import NotFound from "./pages/not-found";
 import PrivateRoute from "./components/protected-route";
+import Help from "./pages/help";
 import App from "./App.jsx";
 import "./index.css";
 
@@ -64,6 +65,7 @@ const router = createBrowserRouter(
         element={<MemberProfile />}
         errorElement={<NotFound />}
       />
+      <Route path="/h/help" element={<Help />} errorElement={<NotFound />} />
       <Route path="*" element={<NotFound />} />
     </Route>,
   ),
