@@ -1,3 +1,3 @@
 # Chatroom
 
-A chatroom for our university Innovation Club communities
+A chatroom system for Meru University Innovation Club Communities and Members
