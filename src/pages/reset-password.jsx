@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../hooks/useAuth";
 import LogoHeader from "../components/logo-header";
 import ICIllustration from "../assets/images/ic_illustration4.svg";
@@ -17,6 +19,8 @@ const schema = yup
   .required();
 
 export default function ResetPassword() {
+  const [showPassword, setShowPassword] = useState(false);
+  const [showPasswordAgain, setShowPasswordAgain] = useState(false);
   const { loading, updatePasswordRecovery } = useAuth();
   const urlParams = new URLSearchParams(window.location.search);
   const userId = urlParams.get("userId");
@@ -64,34 +68,48 @@ export default function ResetPassword() {
 
           <form onSubmit={handleSubmit(onSubmit)} className="block">
             <div className="mb-4">
-              <label htmlFor="password">
+              <label htmlFor="password" className="relative block">
                 <span className="mb-1 block">New Password</span>
                 <input
                   {...register("password")}
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   placeholder="New Password"
                   name="password"
                   id="password"
                   autoComplete="off"
                   className="w-full rounded border border-neutral-600 p-3 outline-none placeholder:text-sm focus:border-ic-green focus:ring-1 focus:ring-ic-green"
                 />
+                <span
+                  role="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 translate-y-1/2 transform text-lg"
+                >
+                  {showPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
                 <span className="mt-1 block text-sm text-red-600 first-letter:uppercase">
                   {errors.password?.message}
                 </span>
               </label>
             </div>
             <div className="mb-4">
-              <label htmlFor="passwordAgain">
+              <label htmlFor="passwordAgain" className="relative block">
                 <span className="mb-1 block">Confirm New Password</span>
                 <input
                   {...register("passwordAgain")}
-                  type="password"
+                  type={showPasswordAgain ? "text" : "password"}
                   placeholder="Confirm New Password"
                   name="passwordAgain"
                   id="passwordAgain"
                   autoComplete="off"
                   className="w-full rounded border border-neutral-600 p-3 outline-none placeholder:text-sm focus:border-ic-green focus:ring-1 focus:ring-ic-green"
                 />
+                <span
+                  role="button"
+                  onClick={() => setShowPasswordAgain(!showPasswordAgain)}
+                  className="absolute right-3 top-1/2 translate-y-1/2 transform text-lg"
+                >
+                  {showPasswordAgain ? <FaEyeSlash /> : <FaEye />}
+                </span>
                 <span className="mt-1 block text-sm text-red-600 first-letter:uppercase">
                   {errors.passwordAgain?.message}
                 </span>

@@ -1,12 +1,13 @@
+import { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
 import useAuth from "../hooks/useAuth";
 import LogoHeader from "../components/logo-header";
 import ICIllustration from "../assets/images/ic_illustration3.svg";
-import { useEffect } from "react";
 
 const schema = yup
   .object()
@@ -17,6 +18,7 @@ const schema = yup
   .required();
 
 export default function Login() {
+  const [showLoginPassword, setShowLoginPassword] = useState(false);
   const { user, loading, loginUser } = useAuth();
   const navigate = useNavigate();
 
@@ -84,7 +86,7 @@ export default function Login() {
               </label>
             </div>
             <div className="mb-4">
-              <label htmlFor="password">
+              <label htmlFor="password" className="relative block">
                 <span className="mb-1 flex items-center justify-between">
                   <span>Password</span>
                   <Link
@@ -96,12 +98,19 @@ export default function Login() {
                 </span>
                 <input
                   {...register("password")}
-                  type="password"
+                  type={showLoginPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
                   id="password"
                   className="w-full rounded border border-neutral-600 p-3 outline-none placeholder:text-sm focus:border-ic-green focus:ring-1 focus:ring-ic-green"
                 />
+                <span
+                  role="button"
+                  onClick={() => setShowLoginPassword(!showLoginPassword)}
+                  className="absolute right-3 top-1/2 translate-y-1/2 transform text-lg"
+                >
+                  {showLoginPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
                 <span className="mt-1 block text-sm text-red-600">
                   {errors.password?.message}
                 </span>

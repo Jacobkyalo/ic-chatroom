@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
-import useAuth from "../hooks/useAuth";
 import { toast } from "react-toastify";
+import { FaEye, FaEyeSlash } from "react-icons/fa6";
+import useAuth from "../hooks/useAuth";
 import LogoHeader from "../components/logo-header";
 import ICIllustration from "../assets/images/ic_illustration3.svg";
 
@@ -17,6 +19,7 @@ const schema = yup
   .required();
 
 export default function Signup() {
+  const [showSignupPassword, setShowSignupPassword] = useState(false);
   const { loading, signupUser } = useAuth();
 
   const {
@@ -94,16 +97,23 @@ export default function Signup() {
               </label>
             </div>
             <div className="mb-4">
-              <label htmlFor="password">
+              <label htmlFor="password" className="relative block">
                 <span className="mb-1 block">Password</span>
                 <input
                   {...register("password")}
-                  type="password"
+                  type={showSignupPassword ? "text" : "password"}
                   placeholder="Password"
                   name="password"
                   id="password"
                   className="w-full rounded border border-neutral-600 p-3 outline-none placeholder:text-sm focus:border-ic-green focus:ring-1 focus:ring-ic-green"
                 />
+                <span
+                  role="button"
+                  onClick={() => setShowSignupPassword(!showSignupPassword)}
+                  className="absolute right-3 top-1/2 translate-y-1/2 transform text-lg"
+                >
+                  {showSignupPassword ? <FaEyeSlash /> : <FaEye />}
+                </span>
                 <span className="mt-1 block text-sm text-red-600">
                   {errors.password?.message}
                 </span>
