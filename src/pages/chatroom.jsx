@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation, useParams } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { toast } from "react-toastify";
 import axios from "axios";
+import { Helmet } from "react-helmet";
 import { VscAccount } from "react-icons/vsc";
 import { MdMenu, MdOutlineHelpOutline } from "react-icons/md";
 import { IoPeopleOutline } from "react-icons/io5";
@@ -92,6 +93,17 @@ export default function Chatroom() {
 
   return (
     <>
+      <Helmet>
+        <title>Chatroom | Innovation Club</title>
+        <meta
+          name="description"
+          content="Meru University Innovation Club Chatroom"
+        />
+        <meta
+          name="keywords"
+          content="Chatroom system, Meru University of Science and Technology, Meru University Innovation Club, Meru University Innovation Club Chatroom, Meru University Innovation Club Chatroom System, Innovation Club, Innovation Club Chatroom, Innovation Club Chatroom System"
+        />
+      </Helmet>
       <section className="flex h-screen">
         <aside className="hidden w-72 overflow-auto p-6 md:block">
           <div className="flex flex-col gap-y-10">
