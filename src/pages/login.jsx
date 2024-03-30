@@ -53,6 +53,10 @@ export default function Login() {
           name="description"
           content="Login to your account to continue to Innovation Club Chatroom"
         />
+        <meta
+          name="keywords"
+          content="Chatroom system, Meru University of Science and Technology, Meru University Innovation Club, Meru University Innovation Club Chatroom, Meru University Innovation Club Chatroom System, Innovation Club, Innovation Club Chatroom, Innovation Club Chatroom System"
+        />
       </Helmet>
       <main>
         <section className="flex items-center justify-center lg:h-screen lg:items-start">
