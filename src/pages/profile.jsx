@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet";
-import { useState } from "react";
+// import axios from "axios";
+import { toast } from "react-toastify";
 import {
   IoChevronBack,
   IoTrashOutline,
@@ -27,6 +29,27 @@ export default function Profile() {
   const [emailPassword, setEmailPassword] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [oldPassword, setOldPassword] = useState("");
+  // const [deleteLoading, setDeleteLoading] = useState(false);
+  // const navigate = useNavigate();
+
+  // const deleteLoggedInUser = async () => {
+  //   try {
+  //     setDeleteLoading(true);
+  //     const res = await axios.delete(
+  //       import.meta.env.VITE_USERS_DELETE_ENDPOINT,
+  //       {
+  //         userId: user?.$id,
+  //       },
+  //     );
+  //     console.log(res);
+  //     setDeleteLoading(false);
+
+  //     navigate("/auth/login");
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //     setDeleteLoading(false);
+  //   }
+  // };
 
   // console.log(user);
   return (
@@ -331,7 +354,8 @@ export default function Profile() {
                 <div className="flex justify-end">
                   <button
                     type="button"
-                    onClick={() => alert("Not implemented yet")}
+                    onClick={() => toast.info("Not implemented, Coming soon!")}
+                    // disabled={deleteLoading}
                     className="mt-8 flex items-center gap-x-2 rounded bg-red-600 px-6 py-3 text-base text-white"
                   >
                     <IoTrashOutline size={20} />

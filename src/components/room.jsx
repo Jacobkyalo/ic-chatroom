@@ -6,15 +6,18 @@ import { MdOutlineAttachFile } from "react-icons/md";
 import { IoSend } from "react-icons/io5";
 import useAuth from "../hooks/useAuth";
 import client, {
+  // BUCKET_ID,
   databases,
   DB_ID,
   MSG_COLL_ID,
+  // storage,
 } from "../config/appwrite.config";
 import MessageCard from "./message-card";
 
 export default function Room() {
   const { user } = useAuth();
   const [message, setMessage] = useState("");
+  // const [file, setFile] = useState(null);
   const [messages, setMessages] = useState([]);
   const { roomId } = useParams();
 
@@ -37,6 +40,28 @@ export default function Room() {
       toast.error(error.message);
     }
   };
+
+  //https://cloud.appwrite.io/v1/storage/buckets/65d477ce01f3083b7601/files/6607ccc221da8adda180/view?project=65aa3e7b68f323e3c772&mode=admin
+
+  // const createMediaMessage = async (e) => {
+  //   e.preventDefault();
+  //   if (!file) return;
+
+  //   const payload = {
+  //     userId: user.$id,
+  //     username: user.name,
+  //     userEmail: user.email,
+  //     roomId: roomId,
+  //     file: file[0],
+  //   };
+
+  //   try {
+  //     await storage.createFile(BUCKET_ID, ID.unique(), payload);
+  //     setFile(null);
+  //   } catch (error) {
+  //     toast.error(error.message);
+  //   }
+  // };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const getMessages = async () => {
@@ -125,7 +150,7 @@ export default function Room() {
           <div className="flex items-center gap-x-4">
             <button
               type="button"
-              onClick={() => alert("Not implemented yet")}
+              onClick={() => toast.info("Not implemented, Coming soon!")}
               className="rounded-full bg-ic-green p-3 text-white hover:opacity-80"
             >
               <MdOutlineAttachFile size={20} />
