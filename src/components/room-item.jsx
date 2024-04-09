@@ -17,9 +17,9 @@ export default function RoomItem({ room, closeCommunities }) {
 
 RoomItem.propTypes = {
   room: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    href: PropTypes.string.isRequired,
-    $id: PropTypes.string.isRequired,
-  }).isRequired,
-  closeCommunities: PropTypes.func.isRequired,
+    name: PropTypes.string,
+    href: PropTypes.string,
+    $id: PropTypes.string,
+  }),
+  closeCommunities: PropTypes.func,
 };
